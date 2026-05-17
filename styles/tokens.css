@@ -1,0 +1,17 @@
+:root {
+    --bg-primary: #0A0A0A;
+    --bg-surface: #161616;
+    --bg-light: #F7F4EF;
+    --accent-red: #C41E1E;
+    --text-primary: #F0ECE6;
+    --text-muted: #6B6B6B;
+    --border: #2A2A2A;
+
+    --font-display: 'Cormorant Garant', serif;
+    --font-ui: 'Inter', sans-serif;
+
+    --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
+
+    --nav-height-mobile: 72px;
+}
