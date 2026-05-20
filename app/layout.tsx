@@ -1,8 +1,12 @@
 import type { Metadata } from 'next'
-import { Cormorant_Garant, Inter } from 'next/font/google'
+import {
+  Cormorant_Garamond,
+  Inter,
+} from 'next/font/google'
+
 import './globals.css'
 
-const cormorant = Cormorant_Garant({
+const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
   weight: ['400', '600', '700'],
   variable: '--font-cormorant',
@@ -17,26 +21,26 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: '[Model Name] — Portfolio',
-  description: 'Official modelling portfolio of [Model Name]. Available for editorial, runway, and commercial bookings.',
-  openGraph: {
-    title: '[Model Name] — Portfolio',
-    description: 'Official modelling portfolio',
-    type: 'website',
-  },
+  title: 'Ashik — Portfolio',
+  description:
+    'Official modelling portfolio of Ashik. Available for editorial, runway, and commercial bookings.',
 }
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode
-}) {
+}>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
+    <html
+      lang="en"
+      className={`${cormorant.variable} ${inter.variable}`}
+    >
       <body>
         <a href="#main-content" className="skip-link">
           Skip to content
         </a>
+
         {children}
       </body>
     </html>
