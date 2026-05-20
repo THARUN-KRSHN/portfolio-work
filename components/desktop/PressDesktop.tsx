@@ -23,42 +23,65 @@ export default function PressDesktop() {
                 </span>
             </div>
 
-            {/* Marquee */}
-            <div className="relative overflow-hidden">
-                <div className="flex whitespace-nowrap animate-marquee">
-                    {[
-                        ...publications,
-                        ...publications,
-                    ].map((pub, i) => (
-                        <span
-                            key={i}
-                            className="font-display font-bold text-red-500 hover:text-white transition-colors duration-300"
-                            style={{
-                                fontSize:
-                                    'clamp(3rem, 6vw, 6rem)',
-                                marginRight:
-                                    '5rem',
-                            }}
-                        >
-                            {pub}
-                        </span>
-                    ))}
+            {/* Moving Marquee */}
+            <div className="relative overflow-hidden w-full">
+                <div className="marquee-track">
+                    {[...publications, ...publications].map(
+                        (pub, i) => (
+                            <span
+                                key={i}
+                                className="font-display font-bold text-red-500 hover:text-white transition-colors duration-300"
+                                style={{
+                                    fontSize:
+                                        'clamp(3rem, 6vw, 6rem)',
+                                    marginRight:
+                                        '5rem',
+                                }}
+                            >
+                                {pub}
+                            </span>
+                        )
+                    )}
                 </div>
             </div>
 
             {/* Quote */}
-            <div className="px-24 mt-20 max-w-4xl">
-                <p className="font-display text-4xl font-bold leading-relaxed text-white">
+            <div className="px-24 mt-24 max-w-5xl">
+                <p className="font-display text-5xl font-bold leading-relaxed text-white">
                     "A presence that
                     commands the frame —
                     effortless, magnetic,
                     unmistakable."
                 </p>
 
-                <p className="font-ui text-sm tracking-[0.25em] uppercase text-red-500 mt-6">
+                <p className="font-ui text-sm tracking-[0.3em] uppercase text-red-500 mt-8">
                     — Vogue Italia, 2024
                 </p>
             </div>
+
+            {/* Marquee Animation */}
+            <style jsx>{`
+                .marquee-track {
+                    display: flex;
+                    width: max-content;
+                    white-space: nowrap;
+                    animation: marqueeDesktop 28s linear infinite;
+                }
+
+                .marquee-track:hover {
+                    animation-play-state: paused;
+                }
+
+                @keyframes marqueeDesktop {
+                    from {
+                        transform: translateX(0);
+                    }
+
+                    to {
+                        transform: translateX(-50%);
+                    }
+                }
+            `}</style>
         </section>
     )
 }

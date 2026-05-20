@@ -22,13 +22,13 @@ export default function PressMobile() {
             }}
         >
             <div className="px-6 py-14">
-                <span className="font-ui text-xs tracking-[0.25em] uppercase text-white block mb-8">
+                <span className="font-ui text-xs tracking-[0.25em] uppercase text-white block mb-10">
                     04 — Press & Features
                 </span>
 
-                {/* Marquee */}
-                <div className="overflow-hidden mb-12">
-                    <div className="flex whitespace-nowrap animate-marquee">
+                {/* Moving Marquee */}
+                <div className="relative overflow-hidden">
+                    <div className="marquee-track-mobile">
                         {[
                             ...publications,
                             ...publications,
@@ -38,7 +38,7 @@ export default function PressMobile() {
                                 className="font-display font-bold text-red-500"
                                 style={{
                                     fontSize:
-                                        'clamp(2rem, 10vw, 4rem)',
+                                        'clamp(2.5rem, 11vw, 4rem)',
                                     marginRight:
                                         '3rem',
                                 }}
@@ -50,8 +50,8 @@ export default function PressMobile() {
                 </div>
 
                 {/* Quote */}
-                <blockquote>
-                    <p className="font-display text-2xl font-bold leading-relaxed text-white">
+                <blockquote className="mt-16">
+                    <p className="font-display text-3xl font-bold leading-relaxed text-white">
                         "A presence that
                         commands the frame —
                         effortless,
@@ -59,12 +59,32 @@ export default function PressMobile() {
                         unmistakable."
                     </p>
 
-                    <footer className="font-ui text-xs tracking-[0.25em] uppercase text-red-500 mt-5">
+                    <footer className="font-ui text-xs tracking-[0.3em] uppercase text-red-500 mt-6">
                         — Vogue Italia,
                         2024
                     </footer>
                 </blockquote>
             </div>
+
+            {/* Animation */}
+            <style jsx>{`
+                .marquee-track-mobile {
+                    display: flex;
+                    width: max-content;
+                    white-space: nowrap;
+                    animation: marqueeMobile 18s linear infinite;
+                }
+
+                @keyframes marqueeMobile {
+                    from {
+                        transform: translateX(0);
+                    }
+
+                    to {
+                        transform: translateX(-50%);
+                    }
+                }
+            `}</style>
         </section>
     )
 }

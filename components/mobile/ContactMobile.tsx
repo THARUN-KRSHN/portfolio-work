@@ -5,7 +5,7 @@ import ContactForm from '@/components/shared/ContactForm'
 const socials = [
     {
         label: 'Instagram',
-        href: 'https://instagram.com/',
+        href: 'https://www.instagram.com/ashik.kf/',
     },
     {
         label: 'LinkedIn',
@@ -56,10 +56,51 @@ export default function ContactMobile() {
                 </p>
             </div>
 
+            {/* FORM */}
             <div className="px-6 pb-12 border-b border-neutral-800">
-                <ContactForm />
+                <div
+                    className="
+                    [&_input]:bg-transparent
+                    [&_input]:border-0
+                    [&_input]:border-b
+                    [&_input]:border-red-500
+                    [&_input]:text-white
+                    [&_input]:placeholder:text-neutral-500
+                    [&_input]:focus:ring-0
+                    [&_input]:focus:border-red-500
+                    [&_input]:outline-none
+                    [&_input]:pb-4
+
+                    [&_textarea]:bg-transparent
+                    [&_textarea]:border-0
+                    [&_textarea]:border-b
+                    [&_textarea]:border-red-500
+                    [&_textarea]:text-white
+                    [&_textarea]:placeholder:text-neutral-500
+                    [&_textarea]:focus:ring-0
+                    [&_textarea]:focus:border-red-500
+                    [&_textarea]:outline-none
+
+                    [&_select]:bg-black
+                    [&_select]:text-white
+                    [&_select]:border-0
+                    [&_select]:border-b
+                    [&_select]:border-red-500
+                    [&_select]:focus:ring-0
+                    [&_select]:focus:border-red-500
+                    [&_select]:outline-none
+                    [&_option]:bg-black
+                    [&_option]:text-white
+
+                    [&_label]:text-white
+                    [&_.error]:hidden
+                "
+                >
+                    <ContactForm />
+                </div>
             </div>
 
+            {/* SOCIALS */}
             <div className="px-6 py-10 border-b border-neutral-800">
                 <h3 className="font-ui text-xs tracking-[0.25em] uppercase text-white mb-5">
                     Follow
@@ -94,6 +135,7 @@ export default function ContactMobile() {
                 </div>
             </div>
 
+            {/* FOOTER */}
             <div className="px-6 py-6 text-center">
                 <p className="font-ui text-xs text-neutral-500 tracking-[0.2em] uppercase">
                     Ashik © 2026 ·

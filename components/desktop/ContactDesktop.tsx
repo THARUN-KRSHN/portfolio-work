@@ -1,31 +1,71 @@
 'use client'
 
+import { useState } from 'react'
+import { CldImage } from 'next-cloudinary'
 import ContactForm from '@/components/shared/ContactForm'
 
 const socials = [
     {
         label: 'Instagram',
-        href: 'https://instagram.com/',
+        href: 'https://www.instagram.com/ashik.kf/',
         note: 'Behind the scenes and daily life.',
+        image:
+            'WhatsApp_Image_2026-05-11_at_10.09.57_PM_miafp6',
     },
     {
         label: 'LinkedIn',
         href: 'https://linkedin.com/',
         note: 'Professional enquiries welcome.',
+        image:
+            'WhatsApp_Image_2026-05-11_at_10.10.11_PM_t135v5',
     },
     {
         label: 'Agency',
         href: '#',
         note: 'Direct booking through representation.',
+        image:
+            'WhatsApp_Image_2026-05-11_at_10.10.12_PM_inrwlz',
     },
 ]
 
 export default function ContactDesktop() {
+    const [hoveredImage, setHoveredImage] =
+        useState<string | null>(null)
+
     return (
         <section
             id="contact"
-            className="bg-black border-t border-neutral-800"
+            className="relative bg-black border-t border-neutral-800 overflow-hidden"
         >
+            {/* Floating Hover Image */}
+            <div
+                className={`
+                    fixed top-1/2 left-1/2 
+                    -translate-x-1/2 -translate-y-1/2
+                    pointer-events-none z-50
+                    transition-all duration-500
+                    ${hoveredImage
+                        ? 'opacity-100 scale-100'
+                        : 'opacity-0 scale-95'
+                    }
+                `}
+            >
+                {hoveredImage && (
+                    <div className="relative w-[320px] h-[420px] overflow-hidden  border border-red-500/30 ">
+                        <CldImage
+                            src={hoveredImage}
+                            alt="Preview"
+                            fill
+                            className="object-cover"
+                            sizes="320px"
+                        />
+
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                    </div>
+                )}
+            </div>
+
+            {/* Header */}
             <div className="px-24 pt-24 pb-16 border-b border-neutral-800">
                 <span className="font-ui text-xs tracking-[0.25em] uppercase text-white block mb-4">
                     05 — Contact
@@ -48,19 +88,22 @@ export default function ContactDesktop() {
                 </h2>
             </div>
 
+            {/* Form */}
             <div className="max-w-2xl mx-auto px-8 py-20">
-                <p className="font-ui text-neutral-400 mb-12 leading-relaxed">
+                <p className="font-ui text-neutral-400 mb-12 leading-relaxed text-lg">
                     For bookings,
                     collaborations, and
-                    press enquiries — fill
-                    out the form below and
-                    we will respond within
-                    48 hours.
+                    press enquiries —
+                    fill out the form
+                    below and we will
+                    respond within 48
+                    hours.
                 </p>
 
                 <ContactForm />
             </div>
 
+            {/* Social Links */}
             <div className="px-24 py-16 border-t border-neutral-800">
                 <h3 className="font-ui text-xs tracking-[0.25em] uppercase text-white mb-8">
                     Or Reach Out Directly
@@ -78,21 +121,31 @@ export default function ContactDesktop() {
                                 }
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group flex items-center justify-between py-6 transition-all duration-300"
+                                onMouseEnter={() =>
+                                    setHoveredImage(
+                                        social.image
+                                    )
+                                }
+                                onMouseLeave={() =>
+                                    setHoveredImage(
+                                        null
+                                    )
+                                }
+                                className="group flex items-center justify-between py-8 transition-all duration-300"
                             >
-                                <span className="font-display text-4xl font-bold text-white group-hover:text-red-500 transition-colors duration-300">
+                                <span className="font-display text-5xl font-bold text-white group-hover:text-red-500 transition-colors duration-300">
                                     {
                                         social.label
                                     }
                                 </span>
 
-                                <span className="font-ui text-sm text-neutral-500 group-hover:text-red-400 transition-colors duration-300">
+                                <span className="font-ui text-base text-neutral-500 group-hover:text-red-400 transition-colors duration-300">
                                     {
                                         social.note
                                     }
                                 </span>
 
-                                <span className="text-white group-hover:text-red-500 transition-colors duration-300 text-2xl">
+                                <span className="text-white group-hover:text-red-500 transition-colors duration-300 text-3xl">
                                     ↗
                                 </span>
                             </a>
@@ -101,6 +154,7 @@ export default function ContactDesktop() {
                 </div>
             </div>
 
+            {/* Footer */}
             <div className="px-24 py-8 border-t border-neutral-800 flex justify-between items-center">
                 <span className="font-ui text-xs tracking-[0.25em] uppercase text-neutral-500">
                     Ashik © 2026
