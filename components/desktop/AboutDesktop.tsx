@@ -1,7 +1,12 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import {
+    useEffect,
+    useRef,
+} from 'react'
+
 import { CldImage } from 'next-cloudinary'
+
 import {
     desktopOnly,
     gsap,
@@ -13,25 +18,30 @@ export default function AboutDesktop() {
     const sectionRef =
         useRef<HTMLDivElement>(null)
 
-    const textRef =
-        useRef<HTMLDivElement>(null)
+    const titleRef =
+        useRef<HTMLHeadingElement>(null)
 
     useEffect(() => {
         desktopOnly(() => {
-            if (!textRef.current) return
+            if (!titleRef.current) return
 
             gsap.fromTo(
-                textRef.current.children,
-                { opacity: 0, y: 50 },
+                titleRef.current.children,
+                {
+                    opacity: 0,
+                    y: 80,
+                },
                 {
                     opacity: 1,
                     y: 0,
-                    duration: 1,
-                    stagger: 0.15,
+                    stagger: 0.2,
+                    duration: 1.2,
                     ease: 'power3.out',
+
                     scrollTrigger: {
-                        trigger: sectionRef.current,
-                        start: 'top 60%',
+                        trigger:
+                            sectionRef.current,
+                        start: 'top 65%',
                     },
                 }
             )
@@ -42,77 +52,61 @@ export default function AboutDesktop() {
         <section
             id="about"
             ref={sectionRef}
-            className="flex h-screen bg-bg-light overflow-hidden"
+            className="flex min-h-screen bg-black overflow-hidden"
         >
-            {/* Portrait */}
-            <div className="relative w-1/2 h-full">
+            {/* Image */}
+            <div className="relative w-1/2 h-screen">
                 <CldImage
-                    src={aboutImage.publicId}
+                    src={
+                        aboutImage.publicId
+                    }
                     alt={aboutImage.alt}
                     fill
                     className="object-cover object-top"
                     sizes="50vw"
                 />
+
+                <div className="absolute inset-0 bg-gradient-to-r from-black/10 to-black/70" />
             </div>
 
-            {/* Text */}
-            <div
-                ref={textRef}
-                className="w-1/2 flex flex-col justify-center px-20"
-                style={{ color: '#0A0A0A' }}
-            >
-                <span className="font-ui text-xs tracking-widest uppercase text-text-muted mb-6">
+            {/* Content */}
+            <div className="w-1/2 flex flex-col justify-center px-20">
+                <span className="font-ui text-xs tracking-[0.25em] uppercase text-neutral-500 mb-6">
                     02 — About
                 </span>
 
                 <h2
-                    className="font-display font-bold leading-tight mb-8"
+                    ref={titleRef}
+                    className="font-display font-bold leading-none mb-10"
                     style={{
                         fontSize:
-                            'clamp(2.5rem, 5vw, 5rem)',
-                        color: '#0A0A0A',
+                            'clamp(3rem, 5vw, 6rem)',
                     }}
                 >
-                    The Face
-                    <br />
-
-                    <span
-                        style={{
-                            color: 'var(--accent-red)',
-                        }}
-                    >
-                        Behind
+                    <span className="block text-white">
+                        Ashik K F
                     </span>
-
-                    <br />
-                    the Frame.
                 </h2>
 
-                <p
-                    className="font-ui text-base leading-relaxed mb-6"
-                    style={{
-                        color: '#444',
-                        maxWidth: '420px',
-                    }}
-                >
-                    Ashik Krishna is a professional
-                    model working across editorial,
-                    runway, and commercial projects.
-                </p>
+                <div className="space-y-8">
+                    <p className="font-ui text-2xl leading-relaxed text-neutral-300 max-w-xl">
+                        Ashik K F is a
+                        professional model
+                        working across
+                        editorial, runway, and
+                        commercial projects.
+                    </p>
 
-                <p
-                    className="font-ui text-base leading-relaxed mb-10"
-                    style={{
-                        color: '#666',
-                        maxWidth: '420px',
-                    }}
-                >
-                    Available worldwide for
-                    campaigns, collaborations, and
-                    fashion bookings.
-                </p>
+                    <p className="font-ui text-lg leading-relaxed text-neutral-500 max-w-lg">
+                        Available worldwide
+                        for campaigns,
+                        collaborations, and
+                        fashion bookings.
+                    </p>
+                </div>
 
-                <div className="flex gap-8">
+                {/* Stats */}
+                <div className="flex gap-10 mt-14">
                     {[
                         {
                             label: 'Height',
@@ -130,22 +124,22 @@ export default function AboutDesktop() {
                             label: 'Based',
                             value: 'India',
                         },
-                    ].map(({ label, value }) => (
-                        <div key={label}>
-                            <p className="font-ui text-xs tracking-widest uppercase text-text-muted mb-1">
-                                {label}
-                            </p>
+                    ].map(
+                        ({
+                            label,
+                            value,
+                        }) => (
+                            <div key={label}>
+                                <p className="font-ui text-xs tracking-[0.25em] uppercase text-neutral-500 mb-2">
+                                    {label}
+                                </p>
 
-                            <p
-                                className="font-display text-xl font-bold"
-                                style={{
-                                    color: '#0A0A0A',
-                                }}
-                            >
-                                {value}
-                            </p>
-                        </div>
-                    ))}
+                                <p className="font-display text-2xl font-bold text-red-500">
+                                    {value}
+                                </p>
+                            </div>
+                        )
+                    )}
                 </div>
             </div>
         </section>

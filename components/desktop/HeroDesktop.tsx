@@ -58,7 +58,7 @@ export default function HeroDesktop() {
             ) as HTMLElement
 
             if (img) {
-                img.style.transform = `translate(${x}px, ${y}px) scale(1.05)`
+                img.style.transform = `translate(${x}px, ${y}px) scale(1.04)`
             }
         }
 
@@ -87,21 +87,26 @@ export default function HeroDesktop() {
                     alt={heroImage.alt}
                     fill
                     priority
-                    className="object-cover object-center"
+                    className="object-cover object-center grayscale"
                     sizes="100vw"
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-bg-primary/30 to-transparent" />
+                {/* Better overlay */}
+                <div className="absolute inset-0 bg-black/20" />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-white/10" />
             </div>
 
-            {/* Content */}
+            {/* Top labels */}
+
+            {/* Main content */}
             <div className="relative z-10 w-full px-24 pb-20">
                 <h1
                     ref={nameRef}
-                    className="font-display font-bold leading-none opacity-0"
+                    className="font-display font-bold leading-[0.9] opacity-0"
                     style={{
-                        fontSize: 'clamp(4rem, 10vw, 9rem)',
-                        color: 'var(--text-primary)',
+                        fontSize: 'clamp(4rem, 11vw, 10rem)',
+                        color: '#F5F5F5',
                     }}
                 >
                     ASHIK
@@ -109,33 +114,37 @@ export default function HeroDesktop() {
 
                     <span
                         style={{
-                            color: 'var(--accent-red)',
+                            color: '#FFFFFF',
                         }}
                     >
-                        KRISHNA
+                        K F
                     </span>
                 </h1>
 
                 <p
                     ref={subRef}
-                    className="mt-4 font-ui text-text-muted tracking-widest uppercase text-sm opacity-0"
+                    className="mt-5 font-ui tracking-[0.25em] uppercase text-sm opacity-0"
+                    style={{
+                        color: 'rgba(255,255,255,0.75)',
+                    }}
                 >
                     Editorial · Runway · Commercial
                 </p>
             </div>
 
             {/* Scroll hint */}
-            <div className="absolute bottom-8 right-8 z-10 flex flex-col items-center gap-2">
+            <div className="absolute bottom-8 right-8 z-20 flex flex-col items-center gap-3">
                 <span
-                    className="font-ui text-xs text-text-muted tracking-widest uppercase"
+                    className="font-ui text-[10px] tracking-[0.25em] uppercase"
                     style={{
                         writingMode: 'vertical-rl',
+                        color: 'rgba(255,255,255,0.7)',
                     }}
                 >
                     Scroll
                 </span>
 
-                <div className="w-px h-16 bg-gradient-to-b from-text-muted to-transparent" />
+                <div className="w-px h-16 bg-gradient-to-b from-white/70 to-transparent" />
             </div>
         </section>
     )

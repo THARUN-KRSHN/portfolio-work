@@ -21,9 +21,9 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Ashik — Portfolio',
+  title: 'Ashik K F — Portfolio',
   description:
-    'Official modelling portfolio of Ashik. Available for editorial, runway, and commercial bookings.',
+    'Official modelling portfolio of Ashik K F.',
 }
 
 export default function RootLayout({
@@ -36,13 +36,7 @@ export default function RootLayout({
       lang="en"
       className={`${cormorant.variable} ${inter.variable}`}
     >
-      <body>
-        <a href="#main-content" className="skip-link">
-          Skip to content
-        </a>
-
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   )
 }

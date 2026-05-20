@@ -7,77 +7,65 @@ export default function AboutMobile() {
     return (
         <section
             id="about"
-            className="bg-bg-light"
-            style={{ paddingBottom: '72px' }}
+            className="bg-black"
+            style={{
+                paddingBottom: '72px',
+            }}
         >
-            {/* Portrait */}
+            {/* Image */}
             <div
                 className="relative w-full"
-                style={{ height: '70svh' }}
+                style={{
+                    height: '70svh',
+                }}
             >
                 <CldImage
-                    src={aboutImage.publicId}
+                    src={
+                        aboutImage.publicId
+                    }
                     alt={aboutImage.alt}
                     fill
                     className="object-cover object-top"
                     sizes="100vw"
                 />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
             </div>
 
-            {/* Text */}
-            <div
-                className="px-6 py-10"
-                style={{ color: '#0A0A0A' }}
-            >
-                <span className="font-ui text-xs tracking-widest uppercase text-text-muted block mb-4">
-                    About
+            {/* Content */}
+            <div className="px-6 py-10">
+                <span className="font-ui text-xs tracking-[0.25em] uppercase text-neutral-500 block mb-4">
+                    02 — About
                 </span>
 
                 <h2
-                    className="font-display font-bold leading-tight mb-6"
+                    className="font-display font-bold leading-none mb-8"
                     style={{
                         fontSize:
-                            'clamp(2.5rem, 10vw, 4rem)',
-                        color: '#0A0A0A',
+                            'clamp(3rem, 12vw, 5rem)',
                     }}
                 >
-                    The Face
-                    <br />
-
-                    <span
-                        style={{
-                            color: 'var(--accent-red)',
-                        }}
-                    >
-                        Behind
+                    <span className="block text-white">
+                        Ashik K F
                     </span>
-
-                    <br />
-                    the Frame.
                 </h2>
 
-                <p
-                    className="font-ui text-base leading-relaxed mb-4"
-                    style={{ color: '#444' }}
-                >
-                    Ashik Krishna is a professional
-                    model working across editorial,
-                    runway, and commercial projects.
+                <p className="font-ui text-lg leading-relaxed text-neutral-300 mb-6">
+                    Ashik K F is a
+                    professional model
+                    working across editorial,
+                    runway, and commercial
+                    projects.
                 </p>
 
-                <p
-                    className="font-ui text-sm leading-relaxed"
-                    style={{ color: '#666' }}
-                >
-                    Available worldwide for bookings
-                    and collaborations.
+                <p className="font-ui text-sm leading-relaxed text-neutral-500">
+                    Available worldwide for
+                    bookings and
+                    collaborations.
                 </p>
 
                 {/* Stats */}
-                <div
-                    className="grid grid-cols-2 gap-6 mt-8 pt-8 border-t"
-                    style={{ borderColor: '#DDD' }}
-                >
+                <div className="grid grid-cols-2 gap-6 mt-10 pt-8 border-t border-neutral-800">
                     {[
                         {
                             label: 'Height',
@@ -95,22 +83,22 @@ export default function AboutMobile() {
                             label: 'Based',
                             value: 'India',
                         },
-                    ].map(({ label, value }) => (
-                        <div key={label}>
-                            <p className="font-ui text-xs tracking-widest uppercase text-text-muted mb-1">
-                                {label}
-                            </p>
+                    ].map(
+                        ({
+                            label,
+                            value,
+                        }) => (
+                            <div key={label}>
+                                <p className="font-ui text-xs tracking-[0.25em] uppercase text-neutral-500 mb-2">
+                                    {label}
+                                </p>
 
-                            <p
-                                className="font-display text-2xl font-bold"
-                                style={{
-                                    color: '#0A0A0A',
-                                }}
-                            >
-                                {value}
-                            </p>
-                        </div>
-                    ))}
+                                <p className="font-display text-2xl font-bold text-red-500">
+                                    {value}
+                                </p>
+                            </div>
+                        )
+                    )}
                 </div>
             </div>
         </section>
