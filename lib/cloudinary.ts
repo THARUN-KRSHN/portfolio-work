@@ -76,7 +76,7 @@ export const galleryImages = [
 
 export const heroImage = {
     publicId:
-        'WhatsApp_Image_2026-05-11_at_10.09.46_PMI_ztisks',
+        'Gemini_Generated_Image_vuztnhvuztnhvuzt_cgo3rm',
     alt: 'Ashik — hero portrait',
 }
 
