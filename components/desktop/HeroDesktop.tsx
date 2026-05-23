@@ -109,16 +109,8 @@ export default function HeroDesktop() {
                         color: '#F5F5F5',
                     }}
                 >
-                    ASHIK
+                    ASHIK K F
                     <br />
-
-                    <span
-                        style={{
-                            color: '#FFFFFF',
-                        }}
-                    >
-                        K F
-                    </span>
                 </h1>
 
                 <p

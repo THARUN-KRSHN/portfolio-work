@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { CldImage } from 'next-cloudinary'
 import ContactForm from '@/components/shared/ContactForm'
+import { contactImage } from '@/lib/cloudinary'
 
 const socials = [
     {
@@ -65,7 +66,7 @@ export default function ContactDesktop() {
                 )}
             </div>
 
-            {/* Header */}
+            {/* HEADER */}
             <div className="px-24 pt-24 pb-16 border-b border-neutral-800">
                 <span className="font-ui text-xs tracking-[0.25em] uppercase text-white block mb-4">
                     05 — Contact
@@ -88,19 +89,55 @@ export default function ContactDesktop() {
                 </h2>
             </div>
 
-            {/* Form */}
-            <div className="max-w-2xl mx-auto px-8 py-20">
-                <p className="font-ui text-neutral-400 mb-12 leading-relaxed text-lg">
-                    For bookings,
-                    collaborations, and
-                    press enquiries —
-                    fill out the form
-                    below and we will
-                    respond within 48
-                    hours.
-                </p>
+            {/* SPLIT LAYOUT */}
+            <div className="grid grid-cols-2 min-h-screen">
+                {/* LEFT IMAGE */}
+                <div className="relative overflow-hidden border-r border-neutral-800">
+                    <CldImage
+                        src={
+                            contactImage.publicId
+                        }
+                        alt={
+                            contactImage.alt
+                        }
+                        fill
+                        priority
+                        className="object-cover"
+                        sizes="50vw"
+                    />
 
-                <ContactForm />
+                    {/* overlays */}
+                    <div className="absolute inset-0 bg-black/30" />
+
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent" />
+
+                    {/* vertical lines */}
+                    <div className="absolute inset-0 flex justify-between px-24 opacity-20">
+                        <div className="w-px bg-white h-full" />
+                        <div className="w-px bg-white h-full" />
+                        <div className="w-px bg-white h-full" />
+                    </div>
+
+                    {/* side number */}
+                </div>
+
+                {/* RIGHT FORM */}
+                <div className="flex items-center justify-center px-20 py-24">
+                    <div className="w-full max-w-xl">
+                        <p className="font-ui text-neutral-300 text-xl leading-relaxed mb-16">
+                            For bookings,
+                            collaborations,
+                            and press
+                            enquiries —
+                            fill out the form
+                            below and we
+                            will respond
+                            within 48 hours.
+                        </p>
+
+                        <ContactForm />
+                    </div>
+                </div>
             </div>
 
             {/* Social Links */}

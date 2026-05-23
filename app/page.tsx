@@ -1,5 +1,8 @@
 'use client'
+
 import { useMediaQuery } from '@/lib/useMediaQuery'
+
+import LoadingScreen from '@/components/shared/LoadingScreen'
 
 // Desktop
 import NavDesktop from '@/components/desktop/NavDesktop'
@@ -20,31 +23,42 @@ import PressMobile from '@/components/mobile/PressMobile'
 import ContactMobile from '@/components/mobile/ContactMobile'
 
 export default function Home() {
-  const isMobile = useMediaQuery('(max-width: 767px)')
+    const isMobile =
+        useMediaQuery(
+            '(max-width: 767px)'
+        )
 
-  if (isMobile) {
+    if (isMobile) {
+        return (
+            <>
+                <LoadingScreen />
+
+                <main id="main-content">
+                    <NavMobile />
+                    <HeroMobile />
+                    <GalleryMobile />
+                    <AboutMobile />
+                    <StatsMobile />
+                    <PressMobile />
+                    <ContactMobile />
+                </main>
+            </>
+        )
+    }
+
     return (
-      <main id="main-content">
-        <NavMobile />
-        <HeroMobile />
-        <GalleryMobile />
-        <AboutMobile />
-        <StatsMobile />
-        <PressMobile />
-        <ContactMobile />
-      </main>
-    )
-  }
+        <>
+            <LoadingScreen />
 
-  return (
-    <main id="main-content">
-      <NavDesktop />
-      <HeroDesktop />
-      <GalleryDesktop />
-      <AboutDesktop />
-      <StatsDesktop />
-      <PressDesktop />
-      <ContactDesktop />
-    </main>
-  )
+            <main id="main-content">
+                <NavDesktop />
+                <HeroDesktop />
+                <GalleryDesktop />
+                <AboutDesktop />
+                <StatsDesktop />
+                <PressDesktop />
+                <ContactDesktop />
+            </main>
+        </>
+    )
 }

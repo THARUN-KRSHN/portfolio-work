@@ -109,8 +109,8 @@ export default function AboutDesktop() {
                 <div className="flex gap-10 mt-14">
                     {[
                         {
-                            label: 'Height',
-                            value: `6'1"`,
+                            label: 'Age',
+                            value: `20`,
                         },
                         {
                             label: 'Eyes',

@@ -86,6 +86,12 @@ export const aboutImage = {
     alt: 'Ashik — portrait',
 }
 
+export const contactImage = {
+    publicId:
+        'WhatsApp_Image_2026-05-20_at_10.39.15_PM_zlaum4',
+    alt: 'Ashik — contact portrait',
+}
+
 export type GalleryImage = (typeof galleryImages)[0]
 
 export type Category =
