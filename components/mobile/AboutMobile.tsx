@@ -68,8 +68,8 @@ export default function AboutMobile() {
                 <div className="grid grid-cols-2 gap-6 mt-10 pt-8 border-t border-neutral-800">
                     {[
                         {
-                            label: 'Height',
-                            value: `6'1"`,
+                            label: 'Age',
+                            value: `20`,
                         },
                         {
                             label: 'Eyes',

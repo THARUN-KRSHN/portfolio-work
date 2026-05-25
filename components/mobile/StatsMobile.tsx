@@ -9,19 +9,19 @@ import { gsap } from '@/lib/animations'
 
 const stats = [
     {
-        value: 8,
+        value: 3,
         suffix: '+',
         label: 'Years Experience',
         note: 'In the industry.',
     },
     {
-        value: 120,
+        value: 6,
         suffix: '+',
         label: 'Campaigns',
         note: 'Completed.',
     },
     {
-        value: 40,
+        value: 1,
         suffix: '+',
         label: 'Publications',
         note: 'Featured in.',

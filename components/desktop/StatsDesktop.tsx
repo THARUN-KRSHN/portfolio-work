@@ -12,19 +12,19 @@ import {
 
 const stats = [
     {
-        value: 8,
+        value: 3,
         suffix: '+',
         label: 'Years Experience',
         note: 'In the industry.',
     },
     {
-        value: 120,
+        value: 6,
         suffix: '+',
         label: 'Campaigns Completed',
         note: 'Turning vision into reality.',
     },
     {
-        value: 40,
+        value: 1,
         suffix: '+',
         label: 'Publications Featured',
         note: 'Editorial excellence.',
