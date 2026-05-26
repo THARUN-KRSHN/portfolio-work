@@ -7,7 +7,7 @@
     --text-muted: #6B6B6B;
     --border: #2A2A2A;
 
-    --font-display: 'Cormorant Garant', serif;
+    --font-display: var(--font-syne), sans-serif;
     --font-ui: 'Inter', sans-serif;
 
     --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);

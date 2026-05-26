@@ -1,21 +1,21 @@
 import type { Metadata } from 'next'
 import {
-  Cormorant_Garamond,
+  Syne,
   Inter,
 } from 'next/font/google'
 
 import './globals.css'
 
-const cormorant = Cormorant_Garamond({
+const syne = Syne({
   subsets: ['latin'],
-  weight: ['400', '600', '700'],
-  variable: '--font-cormorant',
+  weight: ['400', '700', '800'],
+  variable: '--font-syne',
   display: 'swap',
 })
 
 const inter = Inter({
   subsets: ['latin'],
-  weight: ['400', '500', '600'],
+  weight: ['400', '500', '600', '700'],
   variable: '--font-inter',
   display: 'swap',
 })
@@ -34,7 +34,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${inter.variable}`}
+      className={`${syne.variable} ${inter.variable}`}
     >
       <body>{children}</body>
     </html>

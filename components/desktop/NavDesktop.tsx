@@ -1,14 +1,15 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import clsx from 'clsx'
 
 const sections = [
-    { id: 'hero', label: 'Home', num: '00' },
-    { id: 'gallery', label: 'Portfolio', num: '01' },
-    { id: 'about', label: 'About', num: '02' },
-    { id: 'stats', label: 'Credentials', num: '03' },
-    { id: 'contact', label: 'Contact', num: '04' },
+    { id: 'hero', num: '00' },
+    { id: 'gallery', num: '01' },
+    { id: 'about', num: '02' },
+    { id: 'stats', num: '03' },
+    { id: 'press', num: '04' },
+    { id: 'contact', num: '05' },
 ]
 
 export default function NavDesktop() {
@@ -26,17 +27,24 @@ export default function NavDesktop() {
             []
 
         sections.forEach(({ id }) => {
-            const el = document.getElementById(id)
+            const el =
+                document.getElementById(id)
 
             if (!el) return
 
-            const obs = new IntersectionObserver(
-                ([entry]) => {
-                    if (entry.isIntersecting)
-                        setActive(id)
-                },
-                { threshold: 0.4 }
-            )
+            const obs =
+                new IntersectionObserver(
+                    ([entry]) => {
+                        if (
+                            entry.isIntersecting
+                        ) {
+                            setActive(id)
+                        }
+                    },
+                    {
+                        threshold: 0.45,
+                    }
+                )
 
             obs.observe(el)
             observers.push(obs)
@@ -50,7 +58,9 @@ export default function NavDesktop() {
 
     useEffect(() => {
         const handleScroll = () => {
-            setScrolled(window.scrollY > 40)
+            setScrolled(
+                window.scrollY > 40
+            )
         }
 
         window.addEventListener(
@@ -77,97 +87,277 @@ export default function NavDesktop() {
 
     return (
         <>
-            {/* Top Header */}
+            {/* NAV */}
             <header
                 className={clsx(
-                    'fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-10 py-6 transition-all duration-500',
+                    `
+                    fixed
+                    top-6
+                    left-1/2
+                    -translate-x-1/2
+                    z-[100]
+                    transition-all
+                    duration-500
+                `,
                     scrolled
-                        ? 'bg-white/80 backdrop-blur-md'
-                        : 'bg-transparent'
+                        ? 'w-[62vw]'
+                        : 'w-[42vw]'
                 )}
             >
-                {/* Brand */}
-                <div className="font-display text-2xl font-bold tracking-[0.25em] text-black">
-                    ASHIK K F
-                </div>
-
-                {/* Right side */}
-                <div className="flex items-center gap-8">
-                    <span className="flex items-center gap-2 text-[11px] font-ui tracking-[0.25em] uppercase text-black/70">
-                        <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-                        Available For Bookings
-                    </span>
-
-                    {/* Menu Button */}
+                <div
+                    className="
+                        flex
+                        items-center
+                        justify-between
+                        rounded-full
+                        border
+                        border-white/10
+                        bg-black/85
+                        backdrop-blur-xl
+                        px-8
+                        py-5
+                        shadow-[0_10px_40px_rgba(255,0,0,0.12)]
+                    "
+                >
+                    {/* LOGO */}
                     <button
-                        onClick={() => setMenuOpen(true)}
-                        aria-label="Open menu"
-                        className="flex flex-col gap-1.5 p-2 group"
+                        onClick={() =>
+                            scrollTo('hero')
+                        }
+                        className="
+                            font-display
+                            text-xl
+                            font-bold
+                            tracking-[0.35em]
+                            text-white
+                            transition-colors
+                            duration-300
+                            hover:text-red-500
+                        "
                     >
-                        <span className="block w-7 h-px bg-black transition-all duration-300 group-hover:w-5" />
-
-                        <span className="block w-5 h-px bg-black transition-all duration-300 group-hover:w-7" />
-
-                        <span className="block w-7 h-px bg-black transition-all duration-300 group-hover:w-5" />
+                        ASHIK K F
                     </button>
+
+                    {/* RIGHT */}
+                    <div className="flex items-center gap-8">
+                        {/* STATUS */}
+                        <div
+                            className="
+                                flex
+                                items-center
+                                gap-3
+                                font-ui
+                                text-[11px]
+                                uppercase
+                                tracking-[0.3em]
+                                text-white/70
+                            "
+                        >
+                            <span className="h-2 w-2 rounded-full bg-red-500 animate-pulse" />
+
+                            <span>
+                                Available For
+                                Bookings
+                            </span>
+                        </div>
+
+                        {/* MENU */}
+                        <button
+                            onClick={() =>
+                                setMenuOpen(
+                                    true
+                                )
+                            }
+                            className="
+                                group
+                                flex
+                                flex-col
+                                gap-1.5
+                            "
+                            aria-label="Open menu"
+                        >
+                            <span
+                                className="
+                                    h-px
+                                    w-8
+                                    bg-white
+                                    transition-all
+                                    duration-300
+                                    group-hover:bg-red-500
+                                    group-hover:w-6
+                                "
+                            />
+
+                            <span
+                                className="
+                                    h-px
+                                    w-5
+                                    bg-white
+                                    transition-all
+                                    duration-300
+                                    group-hover:bg-red-500
+                                    group-hover:w-8
+                                "
+                            />
+
+                            <span
+                                className="
+                                    h-px
+                                    w-8
+                                    bg-white
+                                    transition-all
+                                    duration-300
+                                    group-hover:bg-red-500
+                                    group-hover:w-6
+                                "
+                            />
+                        </button>
+                    </div>
                 </div>
             </header>
 
-            {/* Left Side Navigation */}
-            <nav className="fixed left-8 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-6">
-                {sections.map(({ id, num }) => (
-                    <button
-                        key={id}
-                        onClick={() => scrollTo(id)}
-                        aria-label={`Navigate to ${id}`}
-                        className={clsx(
-                            'text-xs font-ui tracking-[0.25em] transition-all duration-300',
-                            active === id
-                                ? 'text-red-500'
-                                : 'text-black/40 hover:text-black'
-                        )}
-                    >
-                        {num}
-                    </button>
-                ))}
+            {/* LEFT NAV */}
+            <nav
+                className="
+                    fixed
+                    left-8
+                    top-1/2
+                    z-40
+                    flex
+                    -translate-y-1/2
+                    flex-col
+                    gap-6
+                "
+            >
+                {sections.map(
+                    ({ id, num }) => (
+                        <button
+                            key={id}
+                            onClick={() =>
+                                scrollTo(id)
+                            }
+                            className={clsx(
+                                `
+                                text-xs
+                                font-ui
+                                tracking-[0.3em]
+                                transition-all
+                                duration-300
+                            `,
+                                active === id
+                                    ? 'text-red-500'
+                                    : 'text-white/20 hover:text-white'
+                            )}
+                        >
+                            {num}
+                        </button>
+                    )
+                )}
             </nav>
 
-            {/* Fullscreen Menu */}
+            {/* FULLSCREEN MENU */}
+            {/* FULLSCREEN MENU */}
             {menuOpen && (
-                <div className="fixed inset-0 z-[100] bg-white flex flex-col justify-center px-24">
-                    {/* Close */}
+                <div
+                    className="
+            fixed
+            inset-0
+            z-[200]
+            bg-black
+            text-white
+        "
+                >
+                    {/* BG GLOW */}
+                    <div
+                        className="
+                absolute
+                inset-0
+                pointer-events-none
+                bg-[radial-gradient(circle_at_center,rgba(255,0,0,0.12),transparent_70%)]
+            "
+                    />
+
+                    {/* CLOSE */}
                     <button
-                        onClick={() => setMenuOpen(false)}
+                        onClick={() =>
+                            setMenuOpen(false)
+                        }
                         aria-label="Close menu"
-                        className="absolute top-8 right-10 text-black/50 hover:text-black text-5xl transition-colors"
+                        className="
+                absolute
+                z-[300]
+                right-10
+                top-8
+                text-6xl
+                leading-none
+                text-white/40
+                transition-all
+                duration-300
+                hover:text-red-500
+                hover:rotate-90
+            "
                     >
                         ×
                     </button>
 
-                    {/* Links */}
-                    <nav className="flex flex-col gap-5">
-                        {sections.map(
-                            ({ id, label, num }) => (
-                                <button
-                                    key={id}
-                                    onClick={() => scrollTo(id)}
-                                    className="group flex items-baseline gap-8 text-left"
-                                >
-                                    <span className="text-sm text-red-500 font-ui tracking-widest">
-                                        {num}
-                                    </span>
+                    {/* LINKS */}
+                    <div
+                        className="
+                relative
+                z-10
+                flex
+                h-full
+                flex-col
+                justify-center
+                px-24
+            "
+                    >
+                        <nav className="flex flex-col gap-6">
+                            {sections.map(
+                                ({ id, num }) => (
+                                    <button
+                                        key={id}
+                                        onClick={() =>
+                                            scrollTo(id)
+                                        }
+                                        className="
+                                group
+                                flex
+                                items-center
+                                gap-8
+                                text-left
+                            "
+                                    >
+                                        <span
+                                            className="
+                                    font-ui
+                                    text-sm
+                                    tracking-[0.3em]
+                                    text-red-500
+                                "
+                                        >
+                                            {num}
+                                        </span>
 
-                                    <span className="font-display text-7xl font-bold text-black group-hover:text-red-500 transition-colors duration-300 leading-none">
-                                        {label}
-                                    </span>
-                                </button>
-                            )
-                        )}
-                    </nav>
-
-                    {/* Footer */}
-                    <div className="absolute bottom-10 left-24 text-xs text-black/40 font-ui tracking-[0.25em] uppercase">
-                        Portfolio · 2026
+                                        <span
+                                            className="
+                                    font-display
+                                    text-7xl
+                                    font-bold
+                                    capitalize
+                                    text-white
+                                    transition-all
+                                    duration-300
+                                    group-hover:translate-x-3
+                                    group-hover:text-red-500
+                                "
+                                        >
+                                            {id}
+                                        </span>
+                                    </button>
+                                )
+                            )}
+                        </nav>
                     </div>
                 </div>
             )}

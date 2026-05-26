@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useCallback } from 'react'
+import { useEffect, useCallback, useState } from 'react'
 import { CldImage } from 'next-cloudinary'
 import { type GalleryImage } from '@/lib/cloudinary'
 
@@ -10,17 +10,7 @@ interface Props {
 }
 
 export default function Lightbox({ images, initialIndex, onClose }: Props) {
-    const [index, setIndex] = [initialIndex, () => { }]
-    const [currentIndex, setCurrentIndex] = [initialIndex, (n: number) => {
-        // managed in parent — lift state if needed
-    }]
-
-    // Use local state inside here
-    const [idx, setIdx] = [initialIndex, () => { }]
-
-    // Simple approach: keep index in this component
-    const React = require('react')
-    const [localIdx, setLocalIdx] = React.useState(initialIndex)
+    const [localIdx, setLocalIdx] = useState(initialIndex)
 
     const prev = useCallback(() => setLocalIdx((i: number) => Math.max(0, i - 1)), [])
     const next = useCallback(() => setLocalIdx((i: number) => Math.min(images.length - 1, i + 1)), [images.length])
@@ -92,7 +82,7 @@ export default function Lightbox({ images, initialIndex, onClose }: Props) {
             {/* Caption */}
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-center">
                 <p className="font-display text-xl font-bold text-text-primary">{image.title}</p>
-                <p className="font-ui text-sm text-text-muted mt-1">{image.photographer} · {image.year}</p>
+                <p className="font-ui text-sm text-text-muted mt-1">{image.caption} · {image.year}</p>
                 <p className="font-ui text-xs text-text-muted mt-3">
                     {String(localIdx + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
                 </p>

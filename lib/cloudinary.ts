@@ -125,11 +125,7 @@ export const contactImage = {
     alt: 'Ashik — contact portrait',
 }
 
-export const pressImageBg = {
-    publicId:
-        'WhatsApp_Image_2026-05-20_at_10.40.10_PM_ve9nib',
-    alt: 'Press section background',
-}
+
 
 export type GalleryImage = (typeof galleryImages)[0]
 

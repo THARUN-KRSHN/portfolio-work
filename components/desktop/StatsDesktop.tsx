@@ -131,7 +131,6 @@ export default function StatsDesktop() {
             >
                 {stats.map(
                     ({
-                        value,
                         suffix,
                         label,
                         note,

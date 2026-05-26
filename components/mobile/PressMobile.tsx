@@ -1,7 +1,5 @@
 'use client'
 
-import { CldImage } from 'next-cloudinary'
-import { pressImageBg } from '@/lib/cloudinary'
 
 const publications = [
     'Creative Direction',
@@ -24,21 +22,7 @@ export default function PressMobile() {
             }}
         >
             {/* Background */}
-            <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute inset-0 scale-125">
-                    <CldImage
-                        src={pressImageBg.publicId}
-                        alt={pressImageBg.alt}
-                        fill
-                        sizes="100vw"
-                        className="object-cover opacity-20 blur-[90px] scale-110"
-                    />
-                </div>
 
-                <div className="absolute inset-0 bg-black/80" />
-
-                <div className="absolute inset-0 bg-red-500/5" />
-            </div>
 
             <div className="relative z-10 px-6 py-14">
                 {/* Heading */}

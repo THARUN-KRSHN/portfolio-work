@@ -2,7 +2,6 @@
 
 import {
     useState,
-    useCallback,
     useEffect,
 } from 'react'
 
@@ -28,9 +27,6 @@ export default function GalleryMobile() {
     const [activeCategory, setActiveCategory] =
         useState<Category>('All')
 
-    const [activeIndex, setActiveIndex] =
-        useState(0)
-
     const [lightboxIndex, setLightboxIndex] =
         useState<number | null>(null)
 
@@ -43,7 +39,7 @@ export default function GalleryMobile() {
                     activeCategory
             )
 
-    const [emblaRef, emblaApi] =
+    const [emblaRef] =
         useEmblaCarousel({
             loop: true,
         })
@@ -55,18 +51,7 @@ export default function GalleryMobile() {
         loop: true,
     })
 
-    const onSelect = useCallback(() => {
-        if (!emblaApi) return
 
-        setActiveIndex(
-            emblaApi.selectedScrollSnap()
-        )
-    }, [emblaApi])
-
-    useEffect(() => {
-        if (!emblaApi) return
-        emblaApi.on('select', onSelect)
-    }, [emblaApi, onSelect])
 
     useEffect(() => {
         if (

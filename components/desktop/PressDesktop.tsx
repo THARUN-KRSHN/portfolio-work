@@ -1,7 +1,6 @@
 'use client'
 
-import { CldImage } from 'next-cloudinary'
-import { pressImageBg } from '@/lib/cloudinary'
+
 
 const publications = [
     'Creative Direction',
@@ -21,46 +20,7 @@ export default function PressDesktop() {
             className="relative min-h-screen overflow-hidden border-t border-neutral-800 bg-black py-28"
         >
             {/* Background */}
-            <div className="absolute inset-0 z-0 overflow-hidden">
-                {/* Background Image */}
-                <div className="relative h-full w-full">
-                    <CldImage
-                        src={pressImageBg.publicId}
-                        alt={pressImageBg.alt}
-                        fill
-                        priority
-                        sizes="100vw"
-                        className="
-                object-cover
-                object-center
-                scale-[1.35]
-                blur-[110px]
-                brightness-50
-                contrast-125
-                saturate-150
-                opacity-70
-            "
-                    />
-                </div>
 
-                {/* Dark cinematic overlay */}
-                <div className="absolute inset-0 bg-black/55" />
-
-                {/* Red tint */}
-                <div className="absolute inset-0 bg-red-900/20" />
-
-                {/* Soft glow */}
-                <div
-                    className="absolute inset-0"
-                    style={{
-                        background:
-                            'radial-gradient(circle at center, rgba(255,0,0,0.08), transparent 70%)',
-                    }}
-                />
-
-                {/* Vertical fade */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
-            </div>
             {/* Content */}
             <div className="relative z-10">
                 {/* Heading */}

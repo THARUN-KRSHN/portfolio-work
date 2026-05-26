@@ -18,7 +18,7 @@ const config: Config = {
                 border: '#2A2A2A',
             },
             fontFamily: {
-                display: ['var(--font-cormorant)', 'serif'],
+                display: ['var(--font-syne)', 'sans-serif'],
                 ui: ['var(--font-inter)', 'sans-serif'],
             },
         },
