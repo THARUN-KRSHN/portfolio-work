@@ -15,14 +15,14 @@ const socials = [
     },
     {
         label: 'LinkedIn',
-        href: 'https://linkedin.com/',
+        href: 'linkedin.com/in/ashik-k-f-26037532b',
         note: 'Professional enquiries welcome.',
         image:
             'WhatsApp_Image_2026-05-11_at_10.10.11_PM_t135v5',
     },
     {
         label: 'Agency',
-        href: '#',
+        href: 'https://www.instagram.com/magictailsfashion/',
         note: 'Direct booking through representation.',
         image:
             'WhatsApp_Image_2026-05-11_at_10.10.12_PM_inrwlz',

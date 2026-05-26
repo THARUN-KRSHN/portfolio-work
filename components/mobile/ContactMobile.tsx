@@ -9,11 +9,11 @@ const socials = [
     },
     {
         label: 'LinkedIn',
-        href: 'https://linkedin.com/',
+        href: 'linkedin.com/in/ashik-k-f-26037532b',
     },
     {
         label: 'Agency',
-        href: '#',
+        href: 'https://www.instagram.com/magictailsfashion/',
     },
 ]
 
