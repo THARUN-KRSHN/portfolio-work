@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react'
 import clsx from 'clsx'
+import { CldImage } from 'next-cloudinary'
+import { logoImage } from '@/lib/cloudinary'
 
 const sections = [
     { id: 'hero', num: '00' },
@@ -92,16 +94,16 @@ export default function NavDesktop() {
                 className={clsx(
                     `
                     fixed
-                    top-6
                     left-1/2
                     -translate-x-1/2
                     z-[100]
                     transition-all
-                    duration-500
+                    duration-700
+                    ease-in-out
                 `,
                     scrolled
-                        ? 'w-[62vw]'
-                        : 'w-[42vw]'
+                        ? 'w-[42vw] top-[calc(100vh-6rem)]'
+                        : 'w-[62vw] top-6'
                 )}
             >
                 <div
@@ -125,17 +127,50 @@ export default function NavDesktop() {
                             scrollTo('hero')
                         }
                         className="
-                            font-display
-                            text-xl
-                            font-bold
-                            tracking-[0.35em]
-                            text-white
-                            transition-colors
-                            duration-300
-                            hover:text-red-500
+                            group
+                            flex
+                            items-center
+                            gap-4
                         "
                     >
-                        ASHIK K F
+                        <div
+                            className="
+                                relative
+                                h-11
+                                w-11
+                                overflow-hidden
+                                rounded-full
+                                border
+                                border-red-500/30
+                            "
+                        >
+                            <CldImage
+                                src={
+                                    logoImage.publicId
+                                }
+                                alt={
+                                    logoImage.alt
+                                }
+                                fill
+                                sizes="44px"
+                                className="object-cover"
+                            />
+                        </div>
+
+                        <span
+                            className="
+                                font-display
+                                text-lg
+                                font-bold
+                                tracking-[0.35em]
+                                text-white
+                                transition-colors
+                                duration-300
+                                group-hover:text-red-500
+                            "
+                        >
+                            ASHIK K F
+                        </span>
                     </button>
 
                     {/* RIGHT */}

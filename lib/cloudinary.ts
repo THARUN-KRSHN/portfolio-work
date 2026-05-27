@@ -125,6 +125,12 @@ export const contactImage = {
     alt: 'Ashik — contact portrait',
 }
 
+export const logoImage = {
+    publicId:
+        'Gemini_Generated_Image_reg2vareg2vareg2_1_laijfu',
+    alt: 'Ashik — logo image',
+}
+
 
 
 export type GalleryImage = (typeof galleryImages)[0]

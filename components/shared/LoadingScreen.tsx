@@ -8,6 +8,8 @@ import {
 
 import { gsap } from '@/lib/animations'
 import { useMediaQuery } from '@/lib/useMediaQuery'
+import { CldImage } from 'next-cloudinary'
+import { logoImage } from '@/lib/cloudinary'
 
 export default function LoadingScreen() {
     const [loading, setLoading] =
@@ -16,16 +18,16 @@ export default function LoadingScreen() {
     const wrapperRef =
         useRef<HTMLDivElement>(null)
 
-    const leftRef =
+    const leftPanelRef =
         useRef<HTMLDivElement>(null)
 
-    const rightRef =
+    const rightPanelRef =
         useRef<HTMLDivElement>(null)
 
-    const topRef =
+    const topPanelRef =
         useRef<HTMLDivElement>(null)
 
-    const bottomRef =
+    const bottomPanelRef =
         useRef<HTMLDivElement>(null)
 
     const isMobile =
@@ -44,34 +46,40 @@ export default function LoadingScreen() {
             delay: 3,
         })
 
-        /* DESKTOP */
+        /* DESKTOP SPLIT */
         if (!isMobile) {
-            tl.to(leftRef.current, {
-                x: '-100%',
-                duration: 1.4,
-                ease: 'power4.inOut',
-            }).to(
-                rightRef.current,
+            tl.to(
+                leftPanelRef.current,
+                {
+                    x: '-100%',
+                    duration: 1.5,
+                    ease: 'power4.inOut',
+                }
+            ).to(
+                rightPanelRef.current,
                 {
                     x: '100%',
-                    duration: 1.4,
+                    duration: 1.5,
                     ease: 'power4.inOut',
                 },
                 0
             )
         }
 
-        /* MOBILE */
+        /* MOBILE SPLIT */
         else {
-            tl.to(topRef.current, {
-                y: '-100%',
-                duration: 1.3,
-                ease: 'power4.inOut',
-            }).to(
-                bottomRef.current,
+            tl.to(
+                topPanelRef.current,
+                {
+                    y: '-100%',
+                    duration: 1.4,
+                    ease: 'power4.inOut',
+                }
+            ).to(
+                bottomPanelRef.current,
                 {
                     y: '100%',
-                    duration: 1.3,
+                    duration: 1.4,
                     ease: 'power4.inOut',
                 },
                 0
@@ -99,6 +107,7 @@ export default function LoadingScreen() {
                 inset-0
                 z-[99999]
                 overflow-hidden
+                bg-black
             "
         >
             {/* ========================= */}
@@ -107,139 +116,71 @@ export default function LoadingScreen() {
 
             {!isMobile && (
                 <>
-                    {/* LEFT PANEL */}
+                    {/* LEFT HALF */}
                     <div
-                        ref={leftRef}
+                        ref={leftPanelRef}
                         className="
                             absolute
-                            top-0
                             left-0
-                            w-1/2
+                            top-0
                             h-full
-                            bg-[#ff0000]
-                            flex
-                            items-center
-                            justify-end
+                            w-1/2
+                            bg-black
                             overflow-hidden
                         "
                     >
-                        <div className="pr-2 flex flex-col items-end">
-                            <h1
-                                className="
-                                    uppercase
-                                    text-white
-                                    leading-[0.9]
-                                    whitespace-nowrap
-                                "
-                                style={{
-                                    fontFamily:
-                                        '"Lucidity Condensed", sans-serif',
-
-                                    fontSize:
-                                        '119px',
-
-                                    letterSpacing:
-                                        '0.2em',
-
-                                    fontWeight:
-                                        700,
-                                }}
-                            >
-                                AS
-                            </h1>
-
-                            <p
-                                className="
-                                    uppercase
-                                    text-black
-                                    leading-none
-                                    mt-4
-                                    whitespace-nowrap
-                                "
-                                style={{
-                                    fontFamily:
-                                        '"Lucidity Condensed", sans-serif',
-
-                                    fontSize:
-                                        '38.7px',
-
-                                    letterSpacing:
-                                        '0.472em',
-
-                                    fontWeight:
-                                        700,
-                                }}
-                            >
-                                PORT
-                            </p>
+                        {/* GRID */}
+                        <div className="absolute inset-0 flex justify-between">
+                            {Array.from({
+                                length: 6,
+                            }).map(
+                                (_, i) => (
+                                    <div
+                                        key={
+                                            i
+                                        }
+                                        className="
+                                            h-full
+                                            w-px
+                                            bg-red-900/30
+                                        "
+                                    />
+                                )
+                            )}
                         </div>
                     </div>
 
-                    {/* RIGHT PANEL */}
+                    {/* RIGHT HALF */}
                     <div
-                        ref={rightRef}
+                        ref={rightPanelRef}
                         className="
                             absolute
-                            top-0
                             right-0
-                            w-1/2
+                            top-0
                             h-full
-                            bg-[#ff0000]
-                            flex
-                            items-center
-                            justify-start
+                            w-1/2
+                            bg-black
                             overflow-hidden
                         "
                     >
-                        <div className="pl-2 flex flex-col items-start">
-                            <h1
-                                className="
-                                    uppercase
-                                    text-white
-                                    leading-[0.9]
-                                    whitespace-nowrap
-                                "
-                                style={{
-                                    fontFamily:
-                                        '"Lucidity Condensed", sans-serif',
-
-                                    fontSize:
-                                        '119px',
-
-                                    letterSpacing:
-                                        '0.2em',
-
-                                    fontWeight:
-                                        700,
-                                }}
-                            >
-                                HIK
-                            </h1>
-
-                            <p
-                                className="
-                                    uppercase
-                                    text-black
-                                    leading-none
-                                    mt-4
-                                    whitespace-nowrap
-                                "
-                                style={{
-                                    fontFamily:
-                                        '"Lucidity Condensed", sans-serif',
-
-                                    fontSize:
-                                        '38.7px',
-
-                                    letterSpacing:
-                                        '0.472em',
-
-                                    fontWeight:
-                                        700,
-                                }}
-                            >
-                                FOLIO
-                            </p>
+                        {/* GRID */}
+                        <div className="absolute inset-0 flex justify-between">
+                            {Array.from({
+                                length: 6,
+                            }).map(
+                                (_, i) => (
+                                    <div
+                                        key={
+                                            i
+                                        }
+                                        className="
+                                            h-full
+                                            w-px
+                                            bg-red-900/30
+                                        "
+                                    />
+                                )
+                            )}
                         </div>
                     </div>
                 </>
@@ -251,93 +192,102 @@ export default function LoadingScreen() {
 
             {isMobile && (
                 <>
-                    {/* TOP */}
+                    {/* TOP HALF */}
                     <div
-                        ref={topRef}
+                        ref={topPanelRef}
                         className="
                             absolute
-                            top-0
                             left-0
-                            w-full
+                            top-0
                             h-1/2
-                            bg-[#ff0000]
-                            flex
-                            items-end
-                            justify-center
+                            w-full
+                            bg-black
                             overflow-hidden
                         "
                     >
-                        <div className="pb-3 text-center">
-                            <h1
-                                className="
-                                    uppercase
-                                    text-white
-                                    leading-none
-                                    whitespace-nowrap
-                                "
-                                style={{
-                                    fontFamily:
-                                        '"Lucidity Condensed", sans-serif',
-
-                                    fontSize:
-                                        '58px',
-
-                                    letterSpacing:
-                                        '0.18em',
-
-                                    fontWeight:
-                                        700,
-                                }}
-                            >
-                                ASHIK
-                            </h1>
+                        {/* GRID */}
+                        <div className="absolute inset-0 flex justify-between">
+                            {Array.from({
+                                length: 6,
+                            }).map(
+                                (_, i) => (
+                                    <div
+                                        key={
+                                            i
+                                        }
+                                        className="
+                                            h-full
+                                            w-px
+                                            bg-red-900/30
+                                        "
+                                    />
+                                )
+                            )}
                         </div>
                     </div>
 
-                    {/* BOTTOM */}
+                    {/* BOTTOM HALF */}
                     <div
-                        ref={bottomRef}
+                        ref={bottomPanelRef}
                         className="
                             absolute
                             bottom-0
                             left-0
-                            w-full
                             h-1/2
-                            bg-[#ff0000]
-                            flex
-                            items-start
-                            justify-center
+                            w-full
+                            bg-black
                             overflow-hidden
                         "
                     >
-                        <div className="pt-3 text-center">
-                            <p
-                                className="
-                                    uppercase
-                                    text-black
-                                    whitespace-nowrap
-                                    leading-none
-                                "
-                                style={{
-                                    fontFamily:
-                                        '"Lucidity Condensed", sans-serif',
-
-                                    fontSize:
-                                        '18px',
-
-                                    letterSpacing:
-                                        '0.472em',
-
-                                    fontWeight:
-                                        700,
-                                }}
-                            >
-                                PORTFOLIO
-                            </p>
+                        {/* GRID */}
+                        <div className="absolute inset-0 flex justify-between">
+                            {Array.from({
+                                length: 6,
+                            }).map(
+                                (_, i) => (
+                                    <div
+                                        key={
+                                            i
+                                        }
+                                        className="
+                                            h-full
+                                            w-px
+                                            bg-red-900/30
+                                        "
+                                    />
+                                )
+                            )}
                         </div>
                     </div>
                 </>
             )}
+
+            {/* ========================= */}
+            {/* CENTER LOGO */}
+            {/* ========================= */}
+
+            <div
+                className="
+                    absolute
+                    left-1/2
+                    top-1/2
+                    z-30
+                    -translate-x-1/2
+                    -translate-y-1/2
+                "
+            >
+                <CldImage
+                    src={logoImage.publicId}
+                    alt={logoImage.alt}
+                    width={220}
+                    height={220}
+                    priority
+                    className="
+                        object-contain
+                        select-none
+                    "
+                />
+            </div>
         </div>
     )
 }

@@ -43,20 +43,12 @@ export default function HeroMobile() {
                     className="font-display font-bold leading-[0.9]"
                     style={{
                         fontSize:
-                            'clamp(3.5rem, 18vw, 6.5rem)',
+                            'clamp(2.5rem, 10vw, 5.9rem)',
                         color: '#FFFFFF',
                     }}
                 >
-                    ASHIK
+                    ASHIK K F
                     <br />
-
-                    <span
-                        style={{
-                            color: '#F5F5F5',
-                        }}
-                    >
-                        K F
-                    </span>
                 </h1>
 
                 <p
