@@ -201,7 +201,7 @@ export default function GalleryDesktop() {
                                     <div className="bg-black/70 border border-red-500/30 rounded-2xl p-5 backdrop-blur-md">
                                         <p className="font-display text-3xl font-bold text-red-500">
                                             {
-                                                image.title
+                                                image.category
                                             }
                                         </p>
 
@@ -294,7 +294,7 @@ export default function GalleryDesktop() {
                                         filtered[
                                             lightboxIndex
                                         ]
-                                            .title
+                                            .category
                                     }
                                 </p>
 

@@ -136,7 +136,7 @@ export default function GalleryMobile() {
                                         <div className="rounded-2xl border border-red-500/20 bg-black/60 backdrop-blur-md p-4">
                                             <p className="font-display text-2xl text-red-500 font-bold">
                                                 {
-                                                    image.title
+                                                    image.category
                                                 }
                                             </p>
 
@@ -232,7 +232,7 @@ export default function GalleryMobile() {
                                             <div className="bg-black px-5 py-5 border-t border-red-500/20">
                                                 <p className="font-display text-3xl text-red-500 font-bold">
                                                     {
-                                                        image.title
+                                                        image.category
                                                     }
                                                 </p>
 

@@ -81,7 +81,7 @@ export default function Lightbox({ images, initialIndex, onClose }: Props) {
 
             {/* Caption */}
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-center">
-                <p className="font-display text-xl font-bold text-text-primary">{image.title}</p>
+                <p className="font-display text-xl font-bold text-text-primary">{image.category}</p>
                 <p className="font-ui text-sm text-text-muted mt-1">{image.caption} · {image.year}</p>
                 <p className="font-ui text-xs text-text-muted mt-3">
                     {String(localIdx + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
